@@ -1,5 +1,5 @@
 # WPC-User-Activity-Monitoring
-WPC-Custom-Post-Type-Taxonomies-Filtering. A non-invasive, lightweight WordPress plugin adding user activity monitoring support.
+WPC-User-Activity-Monitoring. A non-invasive, lightweight WordPress plugin adding user activity monitoring support. Latest version 1.0.0.
 
 ## Get a specific user activity status from it's ID.
 ```php
