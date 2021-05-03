@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Plugin Name: WPC-User-Activity-Monitoring
  * Text Domain: wpc-user-activity-monitoring
  * Plugin URI: https://github.com/amarinediary/WPC-User-Activity-Monitoring
- * Description: WPC-User-Activity-Monitoring. A non-invasive, lightweight WordPress plugin adding user activity monitoring support.
+ * Description: WPC-User-Activity-Monitoring. A non-invasive, lightweight WordPress plugin adding user activity monitoring support. Latest version 1.0.0.
  * Version: 1.0.0
  * Requires at least: 3.0.0 
  * Requires PHP: 4.0
