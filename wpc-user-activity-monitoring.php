@@ -45,10 +45,6 @@ if ( ! class_exists( 'WPC_User_Activity_Monitoring' ) ) {
 
             add_action( 'init', array( $this, 'wpc_user_activity_monitoring_transient' ) );
 
-            add_filter( 'manage_users_columns', array( $this, 'wpc_user_activity_monitoring_activity_column' ) );
-
-            add_filter( 'manage_users_custom_column', array( $this, 'wpc_user_activity_monitoring_activity_column_value' ), 10, 3 );
-
         }
         
         /**
