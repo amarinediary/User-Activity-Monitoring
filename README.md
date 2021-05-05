@@ -1,7 +1,22 @@
-# WPC-User-Activity-Monitoring
-WPC-User-Activity-Monitoring. A non-invasive, lightweight WordPress plugin adding user activity monitoring support. Latest version 1.0.0.
+# User-Activity-Monitoring
 
-## Get a specific user activity status from it's ID.
+A non-invasive, lightweight WordPress plugin adding user activity monitoring support. User-Activity-Monitoring is a plug-and-play plugin with no required configuration.
+
+## Table of contents
+
+- [Get a specific user activity status from it's ID]()
+- [Example: Display the currently viewed user (`author.php`) activity status]()
+- [Get an array of all users currently online]()
+- [Example: Display all users currently online]()
+- [Example: Display the total count of users currently online]()
+- [Get an array of all users recently offline]()
+- [Example: Display all users recently offline]()
+- [While in a template-part]()
+- [Bugs and feature requests]()
+- [Copyright and license]()
+- [Installation]()
+
+## Get a specific user activity status from it's ID
 ```php
 <?php 
 
@@ -14,7 +29,7 @@ WPC-User-Activity-Monitoring. A non-invasive, lightweight WordPress plugin addin
  *
  * @return Bool True for online.
  */
-$wpc_user_activity_monitoring->is_user_currently_online( $user_id );
+$user_activity_monitoring->is_user_currently_online( $user_id );
 ```
 
 ### Example
@@ -25,7 +40,7 @@ Display the currently viewed user (`author.php`) activity status.
 
 if ( get_queried_object() instanceof \WP_User && is_author() ) {
 
-  if ( $wpc_user_activity_monitoring->is_user_currently_online( get_queried_object_id() ) ) {
+  if ( $user_activity_monitoring->is_user_currently_online( get_queried_object_id() ) ) {
 
     echo '🟢 Online';
 
@@ -38,7 +53,7 @@ if ( get_queried_object() instanceof \WP_User && is_author() ) {
 };
 ```
 
-## Get an array of all users currently online.
+## Get an array of all users currently online
 ```php
 <?php 
 
@@ -49,7 +64,7 @@ if ( get_queried_object() instanceof \WP_User && is_author() ) {
  *
  * @return Array An array of currently online users ID.
  */
-$wpc_user_activity_monitoring->get_currently_online_nusers();
+$user_activity_monitoring->get_currently_online_nusers();
 ```
 
 ### Example
@@ -58,7 +73,7 @@ Display all users currently online.
 ```php
 <?php 
 
-$currently_online_nusers = $wpc_user_activity_monitoring->get_currently_online_nusers(); 
+$currently_online_nusers = $user_activity_monitoring->get_currently_online_nusers(); 
 
 echo '<ul>';
 
@@ -83,12 +98,12 @@ Display the total count of users currently online.
 ```php
 <?php 
 
-$currently_online_nusers_count = $wpc_user_activity_monitoring->get_currently_online_nusers(); 
+$currently_online_nusers_count = $user_activity_monitoring->get_currently_online_nusers(); 
 
 echo sizeof( $currently_online_nusers_count );
 ```
 
-## Get an array of all users recently offline.
+## Get an array of all users recently offline
 ```php
 <?php 
 
@@ -99,7 +114,7 @@ echo sizeof( $currently_online_nusers_count );
  *
  * @return Array An array of recently offline users ID.
  */
-$wpc_user_activity_monitoring->get_recently_offline_nusers();
+$user_activity_monitoring->get_recently_offline_nusers();
 ```
 
 ### Example
@@ -108,7 +123,7 @@ Display all users recently offline.
 ```php
 <?php 
 
-$recently_offline_nusers = $wpc_user_activity_monitoring->get_recently_offline_nusers(); 
+$recently_offline_nusers = $user_activity_monitoring->get_recently_offline_nusers(); 
 
 echo '<ul>';
 
@@ -141,7 +156,7 @@ To be abble to use a method from a template-part, it is required to pass the cla
 
 get_template_part( 'templates', 'my-awesome-template-part', 
     array( 
-        'wpc_user_activity_monitoring' => $wpc_user_activity_monitoring, 
+        'user_activity_monitoring' => $user_activity_monitoring, 
     ) 
 );
 ```
@@ -151,7 +166,25 @@ Then you can call the argument from the template-part via `$args['my_argument_ha
 ```php
 <?php
 
-$wpc_user_activity_monitoring = $args['wpc_user_activity_monitoring'];
+$user_activity_monitoring = $args['user_activity_monitoring'];
 
 // ...
 ```
+
+## Bugs and feature requests
+
+A problem ? An idea ? Please [Open a new issue on GitHub](https://github.com/amarinediary/User-Activity-Monitoring/issues/new) or [Ask a question on Wordpress User-Activity-Monitoring support](https://wordpress.org/support/plugin/forminator/#new-topic-0).
+
+## Copyright and license
+
+Released under [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](https://github.com/amarinediary/User-Activity-Monitoring/blob/main/LICENSE).
+
+## Installation
+
+If you have a copy of the plugin as a zip file, you can manually upload it and install it through the Plugins admin screen.
+
+1. Navigate to Plugins `→` Add New.
+2. Click the Upload Plugin button at the top of the screen.
+3. [Download the plugin as a zip file](https://github.com/amarinediary/User-Activity-Monitoring/archive/refs/heads/main.zip), Select it from your local filesystem.
+4. Click the Install Now button.
+5. When installation is complete, you’ll see “Plugin installed successfully.” Click the Activate Plugin button at the bottom of the page.
