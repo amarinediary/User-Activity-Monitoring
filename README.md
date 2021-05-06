@@ -5,16 +5,16 @@ A non-invasive, lightweight WordPress plugin adding user activity monitoring sup
 ## Table of contents
 
 - [Get a specific user activity status from it's ID](https://github.com/amarinediary/User-Activity-Monitoring#get-a-specific-user-activity-status-from-its-id)
-- [Example: Display the currently viewed user (`author.php`) activity status]()
-- [Get an array of all users currently online]()
-- [Example: Display all users currently online]()
-- [Example: Display the total count of users currently online]()
-- [Get an array of all users recently offline]()
-- [Example: Display all users recently offline]()
-- [While in a template-part]()
-- [Bugs and feature requests]()
-- [Copyright and license]()
-- [Installation]()
+- [Example: Display the currently viewed user (`author.php`) activity status](https://github.com/amarinediary/User-Activity-Monitoring#get-a-specific-user-activity-status-from-its-id)
+- [Get an array of all users currently online](https://github.com/amarinediary/User-Activity-Monitoring#get-an-array-of-all-users-currently-online)
+- [Example: Display all users currently online](https://github.com/amarinediary/User-Activity-Monitoring#example-display-all-users-currently-online)
+- [Example: Display the total count of users currently online](https://github.com/amarinediary/User-Activity-Monitoring#example-display-the-total-count-of-users-currently-online)
+- [Get an array of all users recently offline](https://github.com/amarinediary/User-Activity-Monitoring#get-an-array-of-all-users-recently-offline)
+- [Example: Display all users recently offline](https://github.com/amarinediary/User-Activity-Monitoring#example-display-all-users-recently-offline)
+- [While in a template-part](https://github.com/amarinediary/User-Activity-Monitoring#while-in-a-template-part)
+- [Bugs and feature requests](https://github.com/amarinediary/User-Activity-Monitoring#bugs-and-feature-requests)
+- [Copyright and license](https://github.com/amarinediary/User-Activity-Monitoring#copyright-and-license)
+- [Installation](https://github.com/amarinediary/User-Activity-Monitoring#copyright-and-license)
 
 ## Get a specific user activity status from it's ID
 ```php
@@ -63,19 +63,19 @@ if ( get_queried_object() instanceof \WP_User && is_author() ) {
  *
  * @return Array An array of currently online users ID.
  */
-$user_activity_monitoring->get_currently_online_nusers();
+$user_activity_monitoring->get_currently_online_users();
 ```
 
-### Example: Display all users currently online.
+### Example: Display all users currently online
 
 ```php
 <?php 
 
-$currently_online_nusers = $user_activity_monitoring->get_currently_online_nusers(); 
+$currently_online_users = $user_activity_monitoring->get_currently_online_users(); 
 
 echo '<ul>';
 
-foreach( $currently_online_nusers as $user_id ) {
+foreach( $currently_online_users as $user_id ) {
 
   if ( get_current_user_id() !== $user_id ) {
 
@@ -90,14 +90,14 @@ foreach( $currently_online_nusers as $user_id ) {
 echo '</ul>';
 ```
 
-### Example: Display the total count of users currently online.
+### Example: Display the total count of users currently online
 
 ```php
 <?php 
 
-$currently_online_nusers_count = $user_activity_monitoring->get_currently_online_nusers(); 
+$currently_online_users_count = $user_activity_monitoring->get_currently_online_users(); 
 
-echo sizeof( $currently_online_nusers_count );
+echo sizeof( $currently_online_users_count );
 ```
 
 ## Get an array of all users recently offline
@@ -111,19 +111,19 @@ echo sizeof( $currently_online_nusers_count );
  *
  * @return Array An array of recently offline users ID.
  */
-$user_activity_monitoring->get_recently_offline_nusers();
+$user_activity_monitoring->get_recently_offline_users();
 ```
 
-### Example: Display all users recently offline.
+### Example: Display all users recently offline
 
 ```php
 <?php 
 
-$recently_offline_nusers = $user_activity_monitoring->get_recently_offline_nusers(); 
+$recently_offline_users = $user_activity_monitoring->get_recently_offline_users(); 
 
 echo '<ul>';
 
-foreach( $recently_offline_nusers as $user_id ) {
+foreach( $recently_offline_users as $user_id ) {
 
   if ( get_current_user_id() !== $user_id ) {
 
