@@ -169,7 +169,7 @@ $user_activity_monitoring = $args['user_activity_monitoring'];
 
 ## Bugs and feature requests
 
-A problem ? An idea ? Please [Open a new issue on GitHub](https://github.com/amarinediary/User-Activity-Monitoring/issues/new) or [Ask a question on Wordpress User-Activity-Monitoring support](https://wordpress.org/support/plugin/forminator/#new-topic-0).
+A problem ? An idea ? Please [Open a new issue on GitHub](https://github.com/amarinediary/User-Activity-Monitoring/issues/new) or [Ask a question on Wordpress User-Activity-Monitoring support](https://wordpress.org/support/plugin/user-activity-monitoring/#new-topic-0).
 
 ## Copyright and license
 
