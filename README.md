@@ -187,6 +187,6 @@ If you have a copy of the plugin as a zip file, you can manually upload it and i
 
 1. Navigate to Plugins `→` Add New.
 2. Click the Upload Plugin button at the top of the screen.
-3. [Download the plugin as a zip file](https://github.com/amarinediary/User-Activity-Monitoring/archive/refs/heads/main.zip), Select it from your local filesystem.
+3. [Download the plugin as a zip file](https://downloads.wordpress.org/plugin/user-activity-monitoring.zip), Select it from your local filesystem.
 4. Click the Install Now button.
 5. When installation is complete, you’ll see “Plugin installed successfully.” Click the Activate Plugin button at the bottom of the page.
