@@ -4,7 +4,7 @@ A non-invasive, lightweight WordPress plugin adding user activity monitoring sup
 
 ## Table of contents
 
-- [Get a specific user activity status from it's ID]()
+- [Get a specific user activity status from it's ID](https://github.com/amarinediary/User-Activity-Monitoring#get-a-specific-user-activity-status-from-its-id)
 - [Example: Display the currently viewed user (`author.php`) activity status]()
 - [Get an array of all users currently online]()
 - [Example: Display all users currently online]()
@@ -32,8 +32,7 @@ A non-invasive, lightweight WordPress plugin adding user activity monitoring sup
 $user_activity_monitoring->is_user_currently_online( $user_id );
 ```
 
-### Example
-Display the currently viewed user (`author.php`) activity status.
+### Example: Display the currently viewed user (`author.php`) activity status
 
 ```php
 <?php 
@@ -67,8 +66,7 @@ if ( get_queried_object() instanceof \WP_User && is_author() ) {
 $user_activity_monitoring->get_currently_online_nusers();
 ```
 
-### Example
-Display all users currently online.
+### Example: Display all users currently online.
 
 ```php
 <?php 
@@ -92,8 +90,7 @@ foreach( $currently_online_nusers as $user_id ) {
 echo '</ul>';
 ```
 
-### Example
-Display the total count of users currently online.
+### Example: Display the total count of users currently online.
 
 ```php
 <?php 
@@ -117,8 +114,7 @@ echo sizeof( $currently_online_nusers_count );
 $user_activity_monitoring->get_recently_offline_nusers();
 ```
 
-### Example
-Display all users recently offline.
+### Example: Display all users recently offline.
 
 ```php
 <?php 
