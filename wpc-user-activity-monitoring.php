@@ -7,10 +7,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 };
 
 /**
- * Plugin Name: WPC-User-Activity-Monitoring
- * Text Domain: wpc-user-activity-monitoring
- * Plugin URI: https://github.com/amarinediary/WPC-User-Activity-Monitoring
- * Description: WPC-User-Activity-Monitoring. A non-invasive, lightweight WordPress plugin adding user activity monitoring support. Latest version 1.0.0.
+ * Plugin Name: User-Activity-Monitoring
+ * Text Domain: user-activity-monitoring
+ * Plugin URI: https://github.com/amarinediary/User-Activity-Monitoring
+ * Description: A non-invasive, lightweight WordPress plugin adding user activity monitoring support. User-Activity-Monitoring is a plug-and-play plugin with no required configuration.
  * Version: 1.0.0
  * Requires at least: 3.0.0 
  * Requires PHP: 4.0
@@ -18,13 +18,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Author: amarinediary
  * Author URI: https://github.com/amarinediary
  * License: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
- * License URI: https://github.com/amarinediary/WPC-User-Activity-Monitoring/blob/main/LICENSE
- * GitHub Plugin URI: https://github.com/amarinediary/WPC-User-Activity-Monitoring
+ * License URI: https://github.com/amarinediary/User-Activity-Monitoring/blob/main/LICENSE
+ * GitHub Plugin URI: https://github.com/amarinediary/User-Activity-Monitoring
  * GitHub Branch: main
  */
-if ( ! class_exists( 'WPC_User_Activity_Monitoring' ) ) {
+if ( ! class_exists( 'User_Activity_Monitoring' ) ) {
 
-    class WPC_User_Activity_Monitoring {
+    class User_Activity_Monitoring {
 
         /**
          * @var Integer User inactivity margin in minutes.
@@ -43,7 +43,7 @@ if ( ! class_exists( 'WPC_User_Activity_Monitoring' ) ) {
          */
         public function __construct() {
 
-            add_action( 'init', array( $this, 'wpc_user_activity_monitoring_transient' ) );
+            add_action( 'init', array( $this, 'user_activity_monitoring_transient' ) );
 
         }
         
@@ -52,15 +52,15 @@ if ( ! class_exists( 'WPC_User_Activity_Monitoring' ) ) {
          *
          * @since 1.0.0
          */
-        public function wpc_user_activity_monitoring_transient() {
+        public function user_activity_monitoring_transient() {
         
             if ( is_user_logged_in() ) {
 
-                $wpc_user_activity_monitoring_transient = get_transient( 'wpc_user_activity_monitoring_transient' );
+                $user_activity_monitoring_transient = get_transient( 'user_activity_monitoring_transient' );
         
-                if ( empty( $wpc_user_activity_monitoring_transient ) ) {
+                if ( empty( $user_activity_monitoring_transient ) ) {
     
-                    $wpc_user_activity_monitoring_transient = array();
+                    $user_activity_monitoring_transient = array();
     
                 };
             
@@ -68,11 +68,11 @@ if ( ! class_exists( 'WPC_User_Activity_Monitoring' ) ) {
                 
                 $timestamp = current_time( 'timestamp' );
     
-                if ( empty( $wpc_user_activity_monitoring_transient[$user_id] ) || ( $wpc_user_activity_monitoring_transient[$user_id] < ( $timestamp - self::USER_INACTIVITY_MARGIN ) ) ) {
+                if ( empty( $user_activity_monitoring_transient[$user_id] ) || ( $user_activity_monitoring_transient[$user_id] < ( $timestamp - self::USER_INACTIVITY_MARGIN ) ) ) {
     
-                    $wpc_user_activity_monitoring_transient[$user_id] = $timestamp;
+                    $user_activity_monitoring_transient[$user_id] = $timestamp;
     
-                    set_transient( 'wpc_user_activity_monitoring_transient', $wpc_user_activity_monitoring_transient, self::TRANSIENT_SELF_CLEAR );
+                    set_transient( 'user_activity_monitoring_transient', $user_activity_monitoring_transient, self::TRANSIENT_SELF_CLEAR );
 
                 };
         
@@ -91,15 +91,15 @@ if ( ! class_exists( 'WPC_User_Activity_Monitoring' ) ) {
          */
         public function is_user_currently_online( $user_id ) {
         
-            $wpc_user_activity_monitoring_transient = get_transient( 'wpc_user_activity_monitoring_transient' );
+            $user_activity_monitoring_transient = get_transient( 'user_activity_monitoring_transient' );
 
-            if ( ! isset( $wpc_user_activity_monitoring_transient[$user_id] ) ) {
+            if ( ! isset( $user_activity_monitoring_transient[$user_id] ) ) {
                 return;
             };
 
-            if ( $wpc_user_activity_monitoring_transient[$user_id] > ( current_time( 'timestamp' ) - self::USER_INACTIVITY_MARGIN ) ) {
+            if ( $user_activity_monitoring_transient[$user_id] > ( current_time( 'timestamp' ) - self::USER_INACTIVITY_MARGIN ) ) {
     
-                return isset( $wpc_user_activity_monitoring_transient[$user_id] );
+                return isset( $user_activity_monitoring_transient[$user_id] );
     
             };
 
@@ -112,23 +112,23 @@ if ( ! class_exists( 'WPC_User_Activity_Monitoring' ) ) {
          *
          * @return Array An array of currently online users ID.
          */
-        public function get_currently_online_nusers() {
+        public function get_currently_online_users() {
         
-            $wpc_user_activity_monitoring_transient = array_reverse( get_transient( 'wpc_user_activity_monitoring_transient' ), true );
+            $user_activity_monitoring_transient = array_reverse( get_transient( 'user_activity_monitoring_transient' ), true );
             
-            $currently_online_nusers = array();
+            $currently_online_users = array();
     
-            foreach ( $wpc_user_activity_monitoring_transient as $user_id => $timestamp ) {
+            foreach ( $user_activity_monitoring_transient as $user_id => $timestamp ) {
     
                 if ( $timestamp > ( current_time( 'timestamp' ) - self::USER_INACTIVITY_MARGIN ) ) {
     
-                    array_push( $currently_online_nusers, $user_id );
+                    array_push( $currently_online_users, $user_id );
     
                 };
     
             };
     
-            return $currently_online_nusers;
+            return $currently_online_users;
         
         }
 
@@ -139,29 +139,29 @@ if ( ! class_exists( 'WPC_User_Activity_Monitoring' ) ) {
          *
          * @return Array An array of recently offline users ID.
          */
-        public function get_recently_offline_nusers() {
+        public function get_recently_offline_users() {
         
-            $wpc_user_activity_monitoring_transient = array_reverse( get_transient( 'wpc_user_activity_monitoring_transient' ), true );
+            $user_activity_monitoring_transient = array_reverse( get_transient( 'user_activity_monitoring_transient' ), true );
             
-            $recently_offline_nusers = array();
+            $recently_offline_users = array();
     
-            foreach ( $wpc_user_activity_monitoring_transient as $user_id => $timestamp ) {
+            foreach ( $user_activity_monitoring_transient as $user_id => $timestamp ) {
     
                 if ( $timestamp < ( current_time( 'timestamp' ) - self::USER_INACTIVITY_MARGIN ) ) {
     
-                    array_push( $recently_offline_nusers, $user_id );
+                    array_push( $recently_offline_users, $user_id );
     
                 };
     
             };
     
-            return $recently_offline_nusers;
+            return $recently_offline_users;
         
         }   
         
     };
 
-    $wpc_user_activity_monitoring = new WPC_User_Activity_Monitoring();
+    $user_activity_monitoring = new User_Activity_Monitoring();
 
 };
 
@@ -170,24 +170,24 @@ if ( ! class_exists( 'WPC_User_Activity_Monitoring' ) ) {
  *
  * @since 1.0.0
  */
-if ( ! wp_next_scheduled ( 'schedule_event_delete_wpc_user_activity_monitoring_transient' ) ) {
+if ( ! wp_next_scheduled ( 'schedule_event_delete_user_activity_monitoring_transient' ) ) {
 
-    wp_schedule_event( strtotime( '23:59:00' ), 'daily', 'schedule_event_delete_wpc_user_activity_monitoring_transient' );
+    wp_schedule_event( strtotime( '23:59:00' ), 'daily', 'schedule_event_delete_user_activity_monitoring_transient' );
 
 };
 
 /**
- * Delete the wpc_user_activity_monitoring_transient.
+ * Delete the user_activity_monitoring_transient.
  *
  * @since 1.0.0
  */
-add_action( 'schedule_event_delete_wpc_user_activity_monitoring_transient', 'delete_wpc_user_activity_monitoring_transient' );
+add_action( 'schedule_event_delete_user_activity_monitoring_transient', 'delete_user_activity_monitoring_transient' );
 
-if ( ! function_exists( 'delete_wpc_user_activity_monitoring_transient' ) ) {
+if ( ! function_exists( 'delete_user_activity_monitoring_transient' ) ) {
 
-    function delete_wpc_user_activity_monitoring_transient() {
+    function delete_user_activity_monitoring_transient() {
 
-        delete_transient( 'wpc_user_activity_monitoring_transient' );
+        delete_transient( 'user_activity_monitoring_transient' );
 
     };
 
