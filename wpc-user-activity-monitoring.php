@@ -48,7 +48,7 @@ if ( ! class_exists( 'User_Activity_Monitoring' ) ) {
         }
         
         /**
-         * Set & update WPC user activity monitoring transient on user server interactions.
+         * Set & update user_activity_monitoring_transient.
          *
          * @since 1.0.0
          */
