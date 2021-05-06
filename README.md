@@ -145,13 +145,11 @@ echo '</ul>';
 ```
 
 ## While in a template-part
-To be abble to use a method from a template-part, it is required to pass the class variable to that template-part. You can pass additional arguments to a template-part via the `$args` parameter.
-
-|Parameters|Description|
-|-|-|
-|`$args`|(array) (Optional) Additional arguments passed to the template-part. Default value: `array()`|
+To be abble to use a method from a template-part, it is required to pass the class variable to that template-part.
 
 - Source @ https://developer.wordpress.org/reference/functions/get_template_part/
+
+> You can pass additional arguments to a template-part via the $args parameter.
 
 ```php
 <?php
