@@ -2,6 +2,12 @@
 
 A non-invasive, lightweight WordPress plugin adding user activity monitoring support. User-Activity-Monitoring is a plug-and-play plugin with no required configuration.
 
+||Version|
+|-|-|
+|Requires at least:|`3.0.0`|
+|Requires PHP:|`4.0`|
+|Tested up to|`5.7.1`|
+
 ## Table of contents
 
 - [Get a specific user activity status from it's ID](https://github.com/amarinediary/User-Activity-Monitoring#get-a-specific-user-activity-status-from-its-id)
